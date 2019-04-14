@@ -15,7 +15,7 @@ ENV CFLAGS "-I/usr/include/hdf5/serial"
 RUN git clone git://github.com/microquake/nlloc.git
 RUN cd nlloc && make
 
-COPY pyproject* /app/
+COPY pyproject* /
 RUN pip install poetry virtualenv
 RUN virtualenv -p python3 virtual
 RUN /bin/bash -c "source /virtual/bin/activate"
