@@ -18,8 +18,8 @@ RUN cd nlloc && make
 COPY pyproject* /
 RUN pip install virtualenv
 RUN virtualenv -p python3.6 ve
-RUN /ve/pip install poetry
-RUN /ve/poetry install
+RUN /ve/bin/pip install poetry
+RUN /ve/bin/poetry install
 
 
 FROM python:3.6
