@@ -21,6 +21,7 @@ RUN virtualenv -p python3 virtual
 RUN /bin/bash -c "source /virtual/bin/activate"
 RUN poetry install
 
+
 FROM python:3.6
 
 RUN apt-get update -qq \
