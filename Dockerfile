@@ -16,10 +16,10 @@ RUN git clone git://github.com/microquake/nlloc.git
 RUN cd nlloc && make
 
 COPY pyproject* /
-RUN pip install poetry virtualenv
-RUN virtualenv -p python3.6 virtual
-RUN /bin/bash -c "source /virtual/bin/activate"
-RUN poetry install
+RUN pip install virtualenv
+RUN virtualenv -p python3.6 ve
+RUN /ve/pip install poetry
+RUN /ve/poetry install
 
 
 FROM python:3.6
@@ -40,8 +40,8 @@ COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
     nlloc/NLLoc nlloc/oct2grid nlloc/PhsAssoc nlloc/scat2latlon \
     nlloc/Time2Angles nlloc/Time2EQ nlloc/Vel2Grid nlloc/Vel2Grid3D /usr/bin
 
-COPY --from=builder /virtual /virtual
+RUN pip install virtualenv
+COPY --from=builder /ve /ve
 
 RUN mkdir -p /app
-RUN /bin/bash -c "source /virtual/bin/activate"
 WORKDIR /app
