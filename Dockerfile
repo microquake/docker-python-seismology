@@ -12,7 +12,7 @@ RUN apt-get update -qq \
  libxext-dev build-essential
 
 ENV CFLAGS "-I/usr/include/hdf5/serial"
-RUN git clone git@github.com:microquake/nlloc.git
+RUN git clone git://github.com/microquake/nlloc.git
 RUN cd nlloc && make
 
 COPY pyproject* /app/
