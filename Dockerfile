@@ -17,7 +17,7 @@ RUN cd nlloc && make
 
 COPY pyproject* /
 RUN pip install poetry virtualenv
-RUN virtualenv -p python3 virtual
+RUN virtualenv -p python3.6 virtual
 RUN /bin/bash -c "source /virtual/bin/activate"
 RUN poetry install
 
