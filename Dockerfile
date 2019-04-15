@@ -1,4 +1,4 @@
-from python:3.6 as builder 
+from python:3.7 as builder 
 
 RUN curl -o micro.tar.gz -J -L https://github.com/zyedidia/micro/releases/download/v1.4.1/micro-1.4.1-linux64.tar.gz
 RUN tar xf micro.tar.gz -C /tmp --strip-components=1
@@ -21,12 +21,12 @@ RUN cd nlloc && make
 
 COPY pyproject* /
 RUN pip install virtualenv
-RUN virtualenv -p python3.6 ve
+RUN virtualenv -p python3.7 ve
 RUN /ve/bin/pip install poetry
 RUN /ve/bin/poetry install
 
 
-FROM python:3.6
+FROM python:3.7
 
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
