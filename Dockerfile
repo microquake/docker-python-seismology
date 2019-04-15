@@ -1,5 +1,9 @@
 from python:3.6 as builder 
 
+RUN curl -o micro.tar.gz -J -L https://github.com/zyedidia/micro/releases/download/v1.4.1/micro-1.4.1-linux64.tar.gz
+RUN tar xf micro.tar.gz -C /tmp --strip-components=1
+
+
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
  gfortran \
@@ -27,12 +31,12 @@ FROM python:3.6
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
  swig \
- libatlas liblapack \
- libhdf5 libfftw3 \
- libxft \
- libxml2 libxslt zlib1g \
- libpng \
- libxext
+ libatlas3-base \
+ libhdf5-100 libfftw3-dev \
+ libxft-dev \
+ libxml2 libxslt-dev \
+ libpng-dev \
+ libxext-dev
 
 COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
     nlloc/Grid2Time nlloc/GridCascadingDecimate nlloc/hypoe2hyp \
@@ -42,6 +46,7 @@ COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
 
 RUN pip install virtualenv
 COPY --from=builder /ve /ve
+COPY --from=builder /tmp/micro /usr/bin/micro
 
 RUN mkdir -p /app
 WORKDIR /app
