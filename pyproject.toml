@@ -6,7 +6,7 @@ authors = ["Reza Jelveh"]
 license = "GPL-3.0"
 
 [tool.poetry.dependencies]
-python = "*"
+python = "^3.6 || ^3.7"
 scikit-fmm = "^2019.1"
 scipy = "^1.2"
 obspy = "^1.1"
