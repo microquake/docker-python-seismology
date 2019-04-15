@@ -42,9 +42,8 @@ COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
     nlloc/Grid2Time nlloc/GridCascadingDecimate nlloc/hypoe2hyp \
     nlloc/interface2fmm nlloc/Loc2ddct nlloc/LocSum nlloc/NLDiffLoc \
     nlloc/NLLoc nlloc/oct2grid nlloc/PhsAssoc nlloc/scat2latlon \
-    nlloc/Time2Angles nlloc/Time2EQ nlloc/Vel2Grid nlloc/Vel2Grid3D /usr/bin
+    nlloc/Time2Angles nlloc/Time2EQ nlloc/Vel2Grid nlloc/Vel2Grid3D /usr/bin/
 
-RUN pip install virtualenv
 COPY --from=builder /ve /ve
 COPY --from=builder /tmp/micro /usr/bin/micro
 
