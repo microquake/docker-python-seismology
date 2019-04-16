@@ -24,6 +24,7 @@ RUN pip install virtualenv
 RUN virtualenv -p python3.7 ve
 RUN /ve/bin/pip install poetry
 RUN /ve/bin/poetry install
+RUN /ve/bin/pip uninstall -y enum34 # poetry currently resolves an incorrect dependency
 
 
 FROM python:3.7
