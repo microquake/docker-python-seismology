@@ -35,6 +35,7 @@ RUN apt-get update -qq \
  libxft-dev \
  libxml2 libxslt-dev \
  libpng-dev \
+ libsndfile1 \
  libxext-dev
 
 COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
