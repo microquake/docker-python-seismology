@@ -8,7 +8,7 @@ RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
  gfortran \
  swig \
- libatlas-dev liblapack-dev \
+ libatlas-base-dev liblapack-dev \
  libhdf5-dev libfftw3-dev \
  libxft-dev \
  libxml2-dev libxslt-dev zlib1g-dev \
