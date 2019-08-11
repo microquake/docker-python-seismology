@@ -31,7 +31,7 @@ RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
  swig \
  libatlas3-base \
- libhdf5-100 libfftw3-dev \
+ libhdf5-103 libfftw3-dev \
  libxft-dev \
  libxml2 libxslt-dev \
  libpng-dev \
