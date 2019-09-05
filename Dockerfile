@@ -36,6 +36,7 @@ RUN apt-get update -qq \
  libxml2 libxslt-dev \
  libpng-dev \
  libsndfile1 \
+ paraview-python \
  graphviz \
  libxext-dev
 
