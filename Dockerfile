@@ -38,7 +38,8 @@ RUN apt-get update -qq \
  libsndfile1 \
  paraview-python \
  graphviz \
- libxext-dev
+ libxext-dev \
+ libgl1
 
 COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
     nlloc/Grid2Time nlloc/GridCascadingDecimate nlloc/hypoe2hyp \
