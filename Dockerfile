@@ -34,6 +34,7 @@ RUN git clone git://github.com/microquake/nlloc.git
 RUN cd nlloc && make
 
 COPY pyproject* /
+RUN pip install --upgrade setuptools
 RUN pip install virtualenv
 RUN virtualenv -p python3.7 ve
 RUN /ve/bin/pip install poetry
