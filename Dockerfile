@@ -66,7 +66,7 @@ COPY --from=builder nlloc/fmm2grid nlloc/fpfit2hyp nlloc/Grid2GMT \
 COPY --from=builder /ve /ve
 COPY --from=builder /tmp/micro /usr/bin/micro
 COPY --from=builder /opt/paraview-osmesa /opt/paraview-osmesa
-COPY --from=builder /usr/local/bin/dockerize /usr/local/bin/dockerize
+COPY --from=builder /usr/local/bin/dockerize /usr/local/bin
 COPY --from=builder /opt/dxf-convert /opt/dxf-convert
 
 RUN mkdir -p /app
