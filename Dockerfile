@@ -50,6 +50,7 @@ FROM python:3.7
 ENV SETUPTOOLS_VERSION 45.1.0
 
 RUN pip install "setuptools==$SETUPTOOLS_VERSION"
+RUN /ve/bin/poetry config virtualenvs.create false
 
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
