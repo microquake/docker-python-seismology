@@ -39,7 +39,6 @@ RUN cd nlloc && make
 
 COPY pyproject* /
 RUN pip install "setuptools==$SETUPTOOLS_VERSION"
-RUN poetry run pip install "setuptools==$SETUPTOOLS_VERSION"
 RUN pip install virtualenv
 RUN virtualenv -p python3.7 ve
 RUN /ve/bin/pip install "poetry==$POETRY_VERSION"
@@ -49,7 +48,6 @@ RUN /ve/bin/poetry install
 FROM python:3.7
 
 RUN pip install "setuptools==$SETUPTOOLS_VERSION"
-RUN poetry run pip install "setuptools==$SETUPTOOLS_VERSION"
 
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
