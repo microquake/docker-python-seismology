@@ -13,9 +13,9 @@ RUN curl -OL "https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_
         && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 RUN mkdir /opt/paraview-osmesa && cd /opt/paraview-osmesa \
-    && curl -OL "https://www.paraview.org/files/v5.7/ParaView-5.7.0-osmesa-MPI-Linux-Python2.7-64bit.tar.gz" \
-    && tar --strip-components=1 -xzf "ParaView-5.7.0-osmesa-MPI-Linux-Python2.7-64bit.tar.gz" \
-    && rm "ParaView-5.7.0-osmesa-MPI-Linux-Python2.7-64bit.tar.gz"
+    && curl -OL "https://www.paraview.org/files/v5.7/ParaView-5.7.0-osmesa-MPI-Linux-Python3.7-64bit.tar.gz" \
+    && tar --strip-components=1 -xzf "ParaView-5.7.0-osmesa-MPI-Linux-Python3.7-64bit.tar.gz" \
+    && rm "ParaView-5.7.0-osmesa-MPI-Linux-Python3.7-64bit.tar.gz"
 
 
 RUN mkdir /opt/dxf-convert && cd /opt/dxf-convert \
