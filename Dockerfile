@@ -1,9 +1,13 @@
 from python:3.7 as builder 
 
-RUN curl -o micro.tar.gz -J -L https://github.com/zyedidia/micro/releases/download/v1.4.1/micro-1.4.1-linux64.tar.gz
+ENV POETRY_VERSION 1.0.5
+ENV MICRO_VERSION 2.0.2
+ENV DOCKERIZE_VERSION v0.6.1
+ENV SETUPTOOLS_VERSION 45.1.0
+
+RUN curl -o micro.tar.gz -J -L https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux64.tar.gz
 RUN tar xf micro.tar.gz -C /tmp --strip-components=1
 
-ENV DOCKERIZE_VERSION v0.6.1
 RUN curl -OL "https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz" \
         && tar -C /usr/local/bin -xzf "dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz" \
         && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
@@ -34,14 +38,18 @@ RUN git clone git://github.com/microquake/nlloc.git
 RUN cd nlloc && make
 
 COPY pyproject* /
-RUN pip install --upgrade setuptools
+RUN pip install "setuptools==$SETUPTOOLS_VERSION"
+RUN poetry run pip install "setuptools==$SETUPTOOLS_VERSION"
 RUN pip install virtualenv
 RUN virtualenv -p python3.7 ve
-RUN /ve/bin/pip install poetry
+RUN /ve/bin/pip install "poetry==$POETRY_VERSION"
 RUN /ve/bin/pip install keyrings.alt
 RUN /ve/bin/poetry install
 
 FROM python:3.7
+
+RUN pip install "setuptools==$SETUPTOOLS_VERSION"
+RUN poetry run pip install "setuptools==$SETUPTOOLS_VERSION"
 
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
