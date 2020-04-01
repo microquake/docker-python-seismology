@@ -47,6 +47,8 @@ RUN /ve/bin/poetry install
 
 FROM python:3.7
 
+ENV SETUPTOOLS_VERSION 45.1.0
+
 RUN pip install "setuptools==$SETUPTOOLS_VERSION"
 
 RUN apt-get update -qq \
