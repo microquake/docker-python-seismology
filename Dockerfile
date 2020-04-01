@@ -41,6 +41,7 @@ COPY pyproject* /
 RUN pip install "setuptools==$SETUPTOOLS_VERSION"
 RUN pip install virtualenv
 RUN virtualenv -p python3.7 ve
+RUN /ve/bin/pip install "setuptools==$SETUPTOOLS_VERSION"
 RUN /ve/bin/pip install "poetry==$POETRY_VERSION"
 RUN /ve/bin/pip install keyrings.alt
 RUN /ve/bin/poetry config virtualenvs.create false
