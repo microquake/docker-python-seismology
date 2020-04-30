@@ -19,7 +19,7 @@ RUN mkdir /opt/paraview-osmesa && cd /opt/paraview-osmesa \
 
 
 RUN mkdir /opt/dxf-convert && cd /opt/dxf-convert \
-    && pip install virtualenv && virtualenv --python=$(which python2) ./venv \
+    && pip install virtualenv && virtualenv --python=$(which python3) ./venv \
     && ./venv/bin/pip install dxfgrabber
 
 RUN apt-get update -qq \
